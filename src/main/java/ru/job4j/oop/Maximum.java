@@ -5,11 +5,9 @@ public class Maximum {
         return one > two ? one : two;
     }
     public static int max (int one, int two, int three) {
-        int t = max(one, two);
-        return t > three ? t : three;
+        return max(max(one, two), three);
     }
     public static int max (int one, int two, int three, int four) {
-        int f = max(one, two, three);
-        return f > four ? f : four;
+        return max(max(one, two, three), four);
     }
 }
