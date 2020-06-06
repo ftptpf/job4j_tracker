@@ -27,9 +27,6 @@ public class Triangle {
         return rls;
     }
     private boolean exist(double a, double b, double c) {
-        if(a >= b + c || b >= a + c || c >= a + b) {
-            return false;
-        }
-        return true;
+        return a < b + c && b < a + c && c < a + b;
     }
 }
