@@ -9,6 +9,6 @@ public class College {
         student.setGroup(44);
         student.setStart(new Date());
         System.out.println(student.getFio() + " from group №" + student.getGroup() +
-                " is start study in " + student.getStart());
+                " is start study in - " + student.getStart());
     }
 }
