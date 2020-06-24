@@ -66,14 +66,13 @@ public class Tracker {
      * @return
      */
     public boolean replace(int id, Item item) {
-        int index = indexOf(id); // Находим index ячейки по id.
-        if (index != -1) { //Если индекс найден
-            items[index].setName(item.getName()); //соответствующей ячейке массива items через сеттер присваиваем name из входного параметра item
-            items[index].setId(id); // той же ячейке можем присвоить и id, но наверное это не будет иметь смысл,
-            // так как id у нас при замене не меняется.
-            return true; // условие выполнено возвращаем true
+        int index = indexOf(id);
+        if (index != -1) {
+            item.setId(id);
+            items[index] = item;
+            return true;
         }
-        return false; // условие не выполнено, индекс ячейки не найден по id, возвращаем false
+        return false;
     }
 
 
