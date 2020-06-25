@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Tracker {
 
     private final Item[] items = new Item[100];
-    private int ids = 1;
-    private int size = 0;
+    private int ids = 1; //используется для генерации нового id
+    private int size = 0; //размер массива без null элементов
 
     /**
      * Метод добавления заявки. Добавляет заявку, переданную в аргументах в массив заявок item.
@@ -59,6 +59,7 @@ public class Tracker {
         /* Если индекс найден возвращаем item, иначе null */
          return index != -1 ? items[index] : null;
     }
+
     /**
      * Метод замены заявки. Удаляем существующую заявку и в эту же ячейку новую. id остается прежним.
      * @param id
@@ -75,6 +76,22 @@ public class Tracker {
         return false;
     }
 
+    /**
+     * Метода удаления заявки (запись в ячейку null), со сдвиго массива.
+     * @param id
+     * @return
+     */
+    public boolean delete(int id) {
+        int index = indexOf(id);
+        items[index] = null;
+        int start = index++;
+        int distPos = index;
+        int length = size - index;
+        items[size - 1] = null;
+        size--;
+        System.arraycopy(items, start, items, distPos, length);
+        return true;
+    }
 
     /**
      * Метод возврата index по id.
