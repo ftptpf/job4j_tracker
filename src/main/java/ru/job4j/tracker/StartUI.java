@@ -26,8 +26,6 @@ public class StartUI {
                 System.out.println("=== Edit (replace) item ====");
                 System.out.print("Enter id: ");
                 int id = Integer.valueOf(scanner.nextLine()); // вводим в командной строке id который ищем
-                Item current = tracker.findById(id); // по id находим текущее значение Item и присваиваем его current
-                System.out.println(current); // выводим значение current в консоль
                 System.out.print("Enter new Name: ");
                 String name = scanner.nextLine(); // вводим новое имя в командной строке для "Item"
                 Item newItem = new Item();
@@ -51,12 +49,23 @@ public class StartUI {
                 System.out.println("=== Find item by id ====");
                 System.out.print("Enter id: ");
                 int id = Integer.valueOf(scanner.nextLine()); // вводим в командной строке id который ищем
-                tracker.findById(id);
+                Item t = tracker.findById(id);
+                if (t.equals(null)) {
+                    System.out.println("Error. Item is null");
+                }else {
+                    System.out.println("Item: " + t);
+                }
             } else if (select == 5) {
                 System.out.println("=== Find item by name ====");
                 System.out.print("Enter name: ");
                 String name = scanner.nextLine(); //в командной строке вводим имя которое ищем
-                tracker.findByName(name);
+                Item[] n = tracker.findByName(name);
+                if (n.length == 0) {
+                    System.out.println("Error. We can't find result.");
+                } else {
+                    System.out.println("Items: " + n);
+                }
+
             } else  if (select == 6) {
                 run = false;
             }
