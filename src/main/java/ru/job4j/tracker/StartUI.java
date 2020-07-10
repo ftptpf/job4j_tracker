@@ -20,7 +20,7 @@ public class StartUI {
                 System.out.println("=== All items ====");
                 Item[] item = tracker.findAll(); // должен показать все не пустые элементы массива //**** с этим проблема ***// ((
                 for (int i = 0; i < item.length; i++) { //цикл для поэлементного вывода значений массива
-                    System.out.println(item[i]);
+                    System.out.println("id: " + item[i].getId() + " name: " +item[i].getName());
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit (replace) item ====");
@@ -53,7 +53,7 @@ public class StartUI {
                 if (t.equals(null)) {
                     System.out.println("Error. Item is null");
                 }else {
-                    System.out.println("Item: " + t);
+                    System.out.println("id: " + t.getId() + " name: " + t.getName());
                 }
             } else if (select == 5) {
                 System.out.println("=== Find item by name ====");
@@ -63,7 +63,8 @@ public class StartUI {
                 if (n.length == 0) {
                     System.out.println("Error. We can't find result.");
                 } else {
-                    System.out.println("Items: " + n);
+                    for(int i = 0; i < n.length; i++)
+                    System.out.println("id: " + n[i].getId() + " name: " + n[i].getName());
                 }
 
             } else  if (select == 6) {

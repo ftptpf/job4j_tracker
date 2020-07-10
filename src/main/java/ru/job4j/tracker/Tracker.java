@@ -43,7 +43,7 @@ public class Tracker {
                 i++;
             }
         }
-        nameWithoutNull = Arrays.copyOf(nameWithoutNull, size);
+        nameWithoutNull = Arrays.copyOf(nameWithoutNull, i);
         return  nameWithoutNull;
     }
 
