@@ -1,33 +1,28 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
 
 public class StartUI {
-    public void init(Scanner scanner, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.print("Select:");
-            int select = Integer.valueOf(scanner.nextLine());
+            int select = Integer.valueOf(input.askStr("Select: "));
             if (select == 0) {
                 System.out.println("=== Create a new Item ====");
-                System.out.print("Enter name: ");
-                String name = scanner.nextLine(); //в командной строке вводим имя
+                String name = input.askStr("Enter name: "); //в командной строке вводим имя
                 Item item = new Item();
                 item.setName(name); // записываем имя "Item"
                 tracker.add(item); // в массива "items" записываем имя и автоматически присваиваем id
             } else if (select == 1) {
                 System.out.println("=== All items ====");
-                Item[] item = tracker.findAll(); // должен показать все не пустые элементы массива //**** с этим проблема ***// ((
+                Item[] item = tracker.findAll(); // должен показать все не пустые элементы массива
                 for (int i = 0; i < item.length; i++) { //цикл для поэлементного вывода значений массива
                     System.out.println("id: " + item[i].getId() + " name: " +item[i].getName());
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit (replace) item ====");
-                System.out.print("Enter id: ");
-                int id = Integer.valueOf(scanner.nextLine()); // вводим в командной строке id который ищем
-                System.out.print("Enter new Name: ");
-                String name = scanner.nextLine(); // вводим новое имя в командной строке для "Item"
+                int id = Integer.valueOf(input.askInt("Enter id: ")); // вводим в командной строке id который ищем
+                String name = input.askStr("Enter new Name: "); // вводим новое имя в командной строке для "Item"
                 Item newItem = new Item();
                 newItem.setName(name); // записываем новое имя которое ввели в командной строке
                 if (tracker.replace(id, newItem)) { // производим поиск по id c заменой на новое имя в "Item"
@@ -37,8 +32,7 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
-                System.out.print("Enter id: ");
-                int id = Integer.valueOf(scanner.nextLine()); // вводим в командной строке id по котрому будет найдена
+                int id = Integer.valueOf(input.askInt("Enter id: ")); // вводим в командной строке id по котрому будет найдена
                 // и удалена информация соответствующей ячейки массива
                 if (tracker.delete(id)) { // производим поиск по id и удаление соответстующего "Item" из массива
                     System.out.println("Delete is Ok.");
@@ -47,8 +41,7 @@ public class StartUI {
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by id ====");
-                System.out.print("Enter id: ");
-                int id = Integer.valueOf(scanner.nextLine()); // вводим в командной строке id который ищем
+                int id = Integer.valueOf(input.askInt("Enter id: ")); // вводим в командной строке id который ищем
                 Item t = tracker.findById(id);
                 if (t.equals(null)) {
                     System.out.println("Error. Item is null");
@@ -57,8 +50,7 @@ public class StartUI {
                 }
             } else if (select == 5) {
                 System.out.println("=== Find item by name ====");
-                System.out.print("Enter name: ");
-                String name = scanner.nextLine(); //в командной строке вводим имя которое ищем
+                String name = input.askStr("Enter name: "); //в командной строке вводим имя которое ищем
                 Item[] n = tracker.findByName(name);
                 if (n.length == 0) {
                     System.out.println("Error. We can't find result.");
@@ -84,8 +76,8 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner,tracker);
+        new StartUI().init(input,tracker);
     }
 }
