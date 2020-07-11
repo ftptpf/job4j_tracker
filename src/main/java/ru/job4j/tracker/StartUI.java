@@ -13,8 +13,7 @@ public class StartUI {
         System.out.println("=== All items ====");
         Item[] item = tracker.findAll(); // должен показать все не пустые элементы массива
         for (int i = 0; i < item.length; i++) { //цикл для поэлементного вывода значений массива
-            String itemstring = item[i].toString(); // переводим из Item в String
-            System.out.println(itemstring);
+            System.out.println(item[i]);
         }
     }
     public static void replaceItem(Input input, Tracker tracker) {
@@ -46,8 +45,7 @@ public class StartUI {
         if (t.equals(null)) {
             System.out.println("Error. Item is null");
         }else {
-            String tstring = t.toString(); // переводим из Item в String
-            System.out.println(tstring);
+            System.out.println(t);
         }
     }
     public static void findByName(Input input, Tracker tracker) {
@@ -58,8 +56,7 @@ public class StartUI {
             System.out.println("Error. We can't find result.");
         } else {
             for(int i = 0; i < n.length; i++) {
-                String nstring = n[i].toString();
-                System.out.println(nstring);
+                System.out.println(n[i]);
             }
         }
     }
