@@ -42,7 +42,7 @@ public class StartUI {
         System.out.println("=== Find item by id ====");
         int id = Integer.valueOf(input.askInt("Enter id: ")); // вводим в командной строке id который ищем
         Item t = tracker.findById(id);
-        if (t.equals(null)) {
+        if (t == null) {
             System.out.println("Error. Item is null");
         }else {
             System.out.println(t);
