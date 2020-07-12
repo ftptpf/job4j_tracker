@@ -41,6 +41,6 @@ public class StartUITest {
         StartUI.deleteItem(new StubInput(answer), tracker); // Иммитируем пользовательский ввод с
         // с переданными в input параметрами строкового массива answer
         Item delete = tracker.findById(item.getId()); // Запускаем поиск удаленного Item по id
-        assertThat(delete, is("null")); // Сравниваем результат и ожидание
+        assertNull(delete); // Проверяем возвращается ли значение null
     }
 }
