@@ -9,7 +9,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
-    final String br = System.lineSeparator();
+    private final String br = System.lineSeparator();
 
     @Test
     public void whenAddItem() {
