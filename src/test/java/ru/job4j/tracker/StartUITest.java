@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
@@ -76,5 +78,93 @@ public class StartUITest {
         assertThat(out.toString(), is(
                 "Menu." + System.lineSeparator() +
                 "0. Exit Program." + System.lineSeparator()));
+    }
+
+    @Test
+    public void whenFindAll() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item1 = new Item();
+        item1.setName("One");
+        tracker.add(item1);
+        Item item2 = new Item();
+        item2.setName("Two");
+        tracker.add(item2);
+        Input in = new StubInput(
+                new String[] {"0", "1"}
+        );
+        UserAction[] actions = {
+                new FindAllAction(out),
+                new ExitProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu.\r\n" +
+                        "0. Show all items.\r\n" +
+                        "1. Exit Program.\r\n" +
+                        "=== All Items ===\r\n" +
+                        "1 One\r\n" +
+                        "2 Two\r\n" +
+                        "Menu.\r\n" +
+                        "0. Show all items.\r\n" +
+                        "1. Exit Program.\r\n"));
+    }
+
+    @Test
+    public void whenFindById() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item1 = new Item();
+        item1.setName("One");
+        tracker.add(item1);
+        Item item2 = new Item();
+        item2.setName("Two");
+        tracker.add(item2);
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(item1.getId()), "1"}
+        );
+        UserAction[] actions = {
+                new FindAllByIdAction(out),
+                new ExitProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu.\r\n" +
+                        "0. Find item by Id.\r\n" +
+                        "1. Exit Program.\r\n" +
+                        "=== Find item by id ===\r\n" +
+                        "1 One\r\n" +
+                        "Menu.\r\n" +
+                        "0. Find item by Id.\r\n" +
+                        "1. Exit Program.\r\n"));
+    }
+
+    @Test
+    public void whenFindByName() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item item1 = new Item();
+        item1.setName("One");
+        tracker.add(item1);
+        Item item2 = new Item();
+        item2.setName("Two");
+        tracker.add(item2);
+        Input in = new StubInput(
+                new String[]{"0", String.valueOf(item1.getName()), "1"}
+        );
+        UserAction[] actions = {
+                new FindByNameAction(out),
+                new ExitProgramAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        assertThat(out.toString(), is(
+                "Menu.\r\n" +
+                        "0. Find items by name.\r\n" +
+                        "1. Exit Program.\r\n" +
+                        "=== Find item by name ===\r\n" +
+                        "1 One\r\n" +
+                        "Menu.\r\n" +
+                        "0. Find items by name.\r\n" +
+                        "1. Exit Program.\r\n"));
     }
 }
