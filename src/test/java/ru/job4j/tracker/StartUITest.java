@@ -9,6 +9,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class StartUITest {
+    final String br = System.lineSeparator();
 
     @Test
     public void whenAddItem() {
@@ -76,8 +77,8 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                "0. Exit Program." + System.lineSeparator()));
+                "Menu." + br +
+                "0. Exit Program." + br));
     }
 
     @Test
@@ -99,15 +100,15 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu.\r\n" +
-                        "0. Show all items.\r\n" +
-                        "1. Exit Program.\r\n" +
-                        "=== All Items ===\r\n" +
-                        "1 One\r\n" +
-                        "2 Two\r\n" +
-                        "Menu.\r\n" +
-                        "0. Show all items.\r\n" +
-                        "1. Exit Program.\r\n"));
+                "Menu." + br +
+                        "0. Show all items." + br +
+                        "1. Exit Program." + br +
+                        "=== All Items ===" + br +
+                        "1 One" + br +
+                        "2 Two" + br +
+                        "Menu." + br +
+                        "0. Show all items." + br +
+                        "1. Exit Program." + br));
     }
 
     @Test
@@ -129,14 +130,14 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu.\r\n" +
-                        "0. Find item by Id.\r\n" +
-                        "1. Exit Program.\r\n" +
-                        "=== Find item by id ===\r\n" +
-                        "1 One\r\n" +
-                        "Menu.\r\n" +
-                        "0. Find item by Id.\r\n" +
-                        "1. Exit Program.\r\n"));
+                "Menu." + br +
+                        "0. Find item by Id." + br +
+                        "1. Exit Program." + br +
+                        "=== Find item by id ===" + br +
+                        "1 One" + br +
+                        "Menu." + br +
+                        "0. Find item by Id." + br +
+                        "1. Exit Program." + br));
     }
 
     @Test
@@ -158,13 +159,13 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu.\r\n" +
-                        "0. Find items by name.\r\n" +
-                        "1. Exit Program.\r\n" +
-                        "=== Find item by name ===\r\n" +
-                        "1 One\r\n" +
-                        "Menu.\r\n" +
-                        "0. Find items by name.\r\n" +
-                        "1. Exit Program.\r\n"));
+                "Menu." + br +
+                        "0. Find items by name." + br +
+                        "1. Exit Program." + br +
+                        "=== Find item by name ===" + br +
+                        "1 One" + br +
+                        "Menu." + br +
+                        "0. Find items by name." + br +
+                        "1. Exit Program." + br));
     }
 }
