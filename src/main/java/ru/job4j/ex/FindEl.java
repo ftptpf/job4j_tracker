@@ -1,20 +1,18 @@
 package ru.job4j.ex;
 
-import java.util.Arrays;
-
 public class FindEl {
     public static int indexOf(String[] value, String key) throws ElementNotFoundException{
         int rls = -1;
-        for(String k : value ) {
-            if (k == key) {
-                System.out.println(Arrays.asList(value).indexOf(k));
+        for (int index = 0; index < value.length; index++) {
+            String k = value[index];
+            if (k.equals(key)) {
                 rls = rls + 1;
+                break;
             }
         }
-            if (rls == -1) {
-                throw new ElementNotFoundException("The string not found. Try other one.");
-            }
-
+        if (rls == -1) {
+            throw new ElementNotFoundException("The string not found. Try other one.");
+        }
         return rls;
 
     }
