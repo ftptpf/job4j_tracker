@@ -6,7 +6,7 @@ public class FindEl {
         for (int index = 0; index < value.length; index++) {
             String k = value[index];
             if (k.equals(key)) {
-                rls = rls + 1;
+                rls = index;
                 break;
             }
         }
