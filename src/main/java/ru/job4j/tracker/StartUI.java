@@ -16,8 +16,12 @@ public class StartUI {
             if(select < 0 || select > actions.length) {
                 out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
             }
-            UserAction action = actions[select];
-            run = action.execute(input, tracker);
+            try {
+                UserAction action = actions[select];
+                run = action.execute(input, tracker);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                e.printStackTrace();
+            }
         }
     }
 
