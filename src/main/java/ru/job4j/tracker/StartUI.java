@@ -15,13 +15,10 @@ public class StartUI {
             int select = input.askInt("Select:");
             if(select < 0 || select > actions.length) {
                 out.println("Wrong input, you can select: 0 .. " + (actions.length - 1));
+                continue;
             }
-            try {
                 UserAction action = actions[select];
                 run = action.execute(input, tracker);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                e.printStackTrace();
-            }
         }
     }
 
