@@ -31,9 +31,8 @@ public class ValidateInputTest {
     @Test
     public void whenCheckOutput() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[] {"zzzzzzzzzzz", "1"}
         );
         UserAction[] actions = {
                 new FindAllAction(out),
@@ -41,10 +40,6 @@ public class ValidateInputTest {
         };
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu: ");
-        new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
-                "Menu." + br +
-                        "0. Show all items." + br +
-                        "1. Exit Program." + br));
+        assertThat(out.toString(), is("Please enter validate data again." + br));
     }
 }
