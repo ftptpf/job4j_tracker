@@ -11,11 +11,9 @@ public class ConvertList {
      */
     public static List<Integer> convert(List<int[]> list) {
         List<Integer> rsl = new ArrayList<>();
-        int i = 0; // инициализация счетчика
         for (int[] m : list) { // берем массив
-            for (int n : m) { // берем числов массиве
+            for (int n : m) { // берем число в массиве
                 rsl.add(n); // добавляем число в список
-                i = i + 1;
             }
         }
         return rsl;
