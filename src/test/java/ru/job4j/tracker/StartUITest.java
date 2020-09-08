@@ -3,7 +3,6 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.is;
@@ -20,17 +19,12 @@ public class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
-        /*UserAction[] actions = {
-                new CreateAction(out),
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(out));
         actions.add(new ExitProgramAction(out));
 
         new StartUI(out).init(in, tracker, actions);
-        //assertThat(tracker.findAll()[0].getName(), is("Item name"));
         assertThat(tracker.findAll().get(0).getName(), is("Item name"));
     }
 
@@ -46,11 +40,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "New item name", "1"}
         );
-        /*UserAction[] actions = {
-                new ReplaceAction(out),
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ReplaceAction(out));
         actions.add(new ExitProgramAction(out));
@@ -70,11 +60,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
-        /*UserAction[] actions = {
-                new DeleteAction(out),
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new DeleteAction(out));
         actions.add(new ExitProgramAction(out));
@@ -90,10 +76,7 @@ public class StartUITest {
                 new String[] {"0"}
         );
         Tracker tracker = new Tracker();
-        /*UserAction[] actions = {
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ExitProgramAction(out));
 
@@ -116,11 +99,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "1"}
         );
-        /*UserAction[] actions = {
-                new FindAllAction(out),
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindAllAction(out));
         actions.add(new ExitProgramAction(out));
@@ -151,11 +130,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item1.getId()), "1"}
         );
-        /*UserAction[] actions = {
-                new FindAllByIdAction(out),
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindAllByIdAction(out));
         actions.add(new ExitProgramAction(out));
@@ -185,11 +160,7 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[]{"0", String.valueOf(item1.getName()), "1"}
         );
-        /*UserAction[] actions = {
-                new FindByNameAction(out),
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new FindByNameAction(out));
         actions.add(new ExitProgramAction(out));
@@ -213,10 +184,7 @@ public class StartUITest {
                 new String[] {"9", "0"}
                 );
         Tracker tracker = new Tracker();
-        /*UserAction[] actions = {
-                new ExitProgramAction(out)
-        };
-        */
+
         List<UserAction> actions = new ArrayList<>();
         actions.add(new ExitProgramAction(out));
 

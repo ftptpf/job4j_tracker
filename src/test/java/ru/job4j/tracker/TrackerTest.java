@@ -24,9 +24,7 @@ public class TrackerTest {
         Item item = new Item();
         item.setName("test1");
         tracker.add(item);
-        //Item[] result = tracker.findByName(item.getName());
         List<Item> result = tracker.findByName(item.getName());
-        //assertThat(result[0].getName(), is(item.getName()));
         assertThat(result.get(0).getName(), is(item.getName()));
     }
     @Test
