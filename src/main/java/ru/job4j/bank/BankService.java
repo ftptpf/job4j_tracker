@@ -20,9 +20,11 @@ public class BankService {
      */
     public void addAccount(String passport, Account account) {
         User findUser = findByPassport(passport); // находим пльзователя по номеру паспорта
-        List<Account> userAccounts = users.get(findUser); // находим список Account-ов пользователя
-        if (!userAccounts.contains(account)) {
-            userAccounts.add(account);
+        if (findUser != null) {
+            List<Account> userAccounts = users.get(findUser); // находим список Account-ов пользователя
+            if (!userAccounts.contains(account)) {
+                userAccounts.add(account);
+            }
         }
     }
 
@@ -32,10 +34,10 @@ public class BankService {
      * @return
      */
     public User findByPassport(String passport) {
-        User findUser = new User("000", "NotUser");
+        User findUser = null;
         Set<User> set = users.keySet();
         for (User person : set) {
-            if(!person.getPassport().isEmpty()); {
+            if(person.getPassport().equals(passport)); {
                 findUser = person;
                 break;
             }
@@ -53,10 +55,13 @@ public class BankService {
     public Account findByRequisite(String passport, String requisite) {
         Account findAccount = null;
         User findUser = findByPassport(passport); // находим пользователя по номеру паспорта
-        List<Account> userAccounts = users.get(findUser); // находим список аккаунтов пользователя
-        for (Account a : userAccounts) { //перебираем найденные "Account-ы" пользователя
-            if (a.getRequisite().contains(requisite)) { //если реквизиты найдены
-                findAccount = a; // возвращаем "Account"
+        if (findUser != null) {
+            List<Account> userAccounts = users.get(findUser); // находим список аккаунтов пользователя
+            for (Account a : userAccounts) { //перебираем найденные "Account-ы" пользователя
+                if (a.getRequisite().equals(requisite)) { //если реквизиты найдены
+                    findAccount = a; // возвращаем "Account"
+                    break;
+                }
             }
         }
         return findAccount;
@@ -64,7 +69,7 @@ public class BankService {
 
     /**
      * Метод для перевода денег с одного счета на другой
-     * @param srcPassport паспорт отправилтеля
+     * @param srcPassport паспорт отправителя
      * @param srcRequisite реквизиты отправителя
      * @param destPassport паспорт получателя
      * @param destRequisite реквизиты получателя
@@ -76,8 +81,9 @@ public class BankService {
         boolean rsl = false;
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount != null || amount < srcAccount.getBalance()) {
-            destAccount.setBalance(amount + destAccount.getBalance());
+        if (destAccount != null && srcAccount != null || amount < srcAccount.getBalance()) {
+            destAccount.setBalance(destAccount.getBalance() + amount);
+            srcAccount.setBalance((srcAccount.getBalance() - amount));
             rsl = true;
         }
         return rsl;
