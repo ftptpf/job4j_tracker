@@ -21,7 +21,7 @@ public class User implements Comparable<User> {
     @Override
     public int compareTo(User o) {
         int rsl = name.compareTo(o.name); // сравниваем два имени
-        if (name.equals(o.name)) { // если имена равны
+        if (rsl == 0) { // если имена равны
             rsl = Integer.compare(age, o.age); // сравниваем возраст
         }
         return rsl;
