@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.Comparator;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -23,6 +24,27 @@ public class JobTest {
     }
 
     /**
+     * Тест сортировки по имени (по убыванию) и по приоритету (по убыванию). Имена равны.
+     */
+    @Test
+    public void whenCompatorByNameAndProrityDec2() {
+        Comparator<Job> cmpName = new JobDescByName();
+        Comparator<Job> cmpNamePriority = new JobDescByName().thenComparing(new JobDescByPriority());
+        int rsl = cmpNamePriority.compare(
+                new Job("A", 0),
+                new Job("A", 1)
+        );
+        int result = cmpName.compare(
+                new Job("A", 0),
+                new Job("A", 1)
+        );
+        assertThat(result, is(0));
+        assertThat(rsl, greaterThan(0));
+    }
+
+
+
+    /**
      * Тест сортировки по имени (по возрастанию) и по приоритету (по возрастанию).
      */
     @Test
@@ -34,6 +56,26 @@ public class JobTest {
         );
         assertThat(rsl, greaterThan(0));
     }
+
+    /**
+     * Тест сортировки по имени (по возрастанию) и по приоритету (по возрастанию). Имена равны.
+     */
+    @Test
+    public void whenCompatorByNameAndProrityIncr2() {
+        Comparator<Job> cmpName = new JobIncreaseByName();
+        Comparator<Job> cmpNamePriority = new JobIncreaseByName().thenComparing(new JobIncreaseByPriority());
+        int rsl = cmpNamePriority.compare(
+                new Job("A", 0),
+                new Job("A", 1)
+        );
+        int result = cmpName.compare(
+                new Job("A", 0),
+                new Job("A", 1)
+        );
+        assertThat(result, is(0));
+        assertThat(rsl, lessThan(0));
+    }
+
     /**
      * Тест сортировки по имени (по убыванию).
      */
