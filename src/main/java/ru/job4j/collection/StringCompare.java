@@ -21,26 +21,17 @@ public class StringCompare implements Comparator<String> {
         char[] lch = left.toCharArray(); //преобразуем left строку в массив символов
         char[] rch = right.toCharArray(); //преобразуем right строку в массив символов
 
-        if (lch.length > rch.length) {
-            space = rch.length;
-        } else {
-            space = lch.length;
-        }
-
+        space = Math.min(lch.length, rch.length); // находим минимальную длину из двух массивов
 
         for (int i = 0; i < space; i++) {
-            if (lch[i] != rch[i]) {
-                result = Character.compare(lch[i], rch[i]);
-                break;
-            } else if (lch.length > rch.length ) {
-                result = lch[i + 1];
-                break;
-            } else if (lch.length < rch.length ) {
-                result = - rch[i + 1];
-                break;
+            result = Character.compare(lch[i], rch[i]); // посимвольно сравниваем в рамках длинны минимального маассива
+            if (result != 0) { // если находим не одинаковые символы
+                break; // прерываем выполнение цикла
             }
         }
-
+        if (result == 0) {
+            result = Integer.compare(lch.length, rch.length); // делаем сравнение длин массивов
+        }
         return result;
     }
 }

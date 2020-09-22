@@ -58,4 +58,14 @@ public class StringCompareTest {
         );
         assertThat(rsl, lessThan(0));
     }
+
+    @Test
+    public void whenRightGreaterThanLeftResultShouldBePositive() {
+        StringCompare compare = new StringCompare();
+        int rsl = compare.compare(
+                "Petrova",
+                "Petrov"
+        );
+        assertThat(rsl, greaterThan(0));
+    }
 }
