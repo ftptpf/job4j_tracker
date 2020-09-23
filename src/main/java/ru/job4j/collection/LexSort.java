@@ -13,11 +13,8 @@ public class LexSort implements Comparator<String> {
         int lint = Integer.parseInt(lf[0]);//строку в массиве по индексу [0] преобразуем в число
         int rint = Integer.parseInt(rf[0]);//строку в массиве по индексу [0] преобразуем в число
 
-        if (lint > rint) {
-            result = 1;
-        } else if (lint < rint) {
-            result = -1;
-        }
+        result = Integer.compare(lint, rint);
+
         return result;
     }
 }
