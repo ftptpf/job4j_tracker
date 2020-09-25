@@ -9,17 +9,17 @@ public class MaximumTest {
 
     @Test
     public void maxTwo() {
-        int result = Maximum.max(3,5);
+        int result = Maximum.max(3, 5);
         assertThat(result, is(5));
     }
     @Test
     public void maxThree() {
-        int result = Maximum.max(4,8,6);
-        assertThat(result,is(8));
+        int result = Maximum.max(4, 8, 6);
+        assertThat(result, is(8));
     }
     @Test
     public void maxFour() {
-        int result = Maximum.max(10,1, 1, 4);
+        int result = Maximum.max(10, 1, 1,  4);
         assertThat(result, is(10));
     }
 }

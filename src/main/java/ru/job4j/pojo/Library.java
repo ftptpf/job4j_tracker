@@ -13,7 +13,7 @@ public class Library {
         books[2] = sr;
         books[3] = ex;
 
-        for(int index = 0; index < books.length; index++) {
+        for (int index = 0; index < books.length; index++) {
             Book bi = books[index];
             System.out.println(bi.getName() + " - " + bi.getPage() + " pages");
         }
@@ -22,13 +22,13 @@ public class Library {
         books[0] = books[3];
         books[3] = temp;
 
-        for(int index = 0; index < books.length; index++) {
+        for (int index = 0; index < books.length; index++) {
             Book bi = books[index];
             System.out.println(bi.getName() + " - " + bi.getPage() + " pages");
         }
-        for(int index = 0; index < books.length; index++) {
+        for (int index = 0; index < books.length; index++) {
             Book bi = books[index];
-            if(bi.equals(cc)) {
+            if (bi.equals(cc)) {
             System.out.println(bi.getName() + " - " + bi.getPage() + " pages");
             }
         }

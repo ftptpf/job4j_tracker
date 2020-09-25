@@ -16,7 +16,7 @@ public class StartUI {
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select:");
-            if(select < 0 || select > actions.size()) {
+            if (select < 0 || select > actions.size()) {
                 out.println("Wrong input, you can select: 0 .. " + (actions.size() - 1));
                 continue;
             }
@@ -28,7 +28,7 @@ public class StartUI {
     private void showMenu(List<UserAction> actions) {
         out.println("Menu.");
         for (int index = 0; index < actions.size(); index++) {
-            out.println(index + ". " +actions.get(index).name());
+            out.println(index + ". " + actions.get(index).name());
         }
     }
 

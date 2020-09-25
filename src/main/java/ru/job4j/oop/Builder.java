@@ -4,7 +4,9 @@ public class Builder extends Engineer {
     private String plumber;
     private String scheme;
 
-    public Builder(){}
+    public Builder() {
+
+    }
     public Builder(String plumber, int car) {
         super(car);
         this.plumber = plumber;
@@ -14,6 +16,10 @@ public class Builder extends Engineer {
         this.scheme = scheme;
     }
 
-    public void plumberWork(String plumber, int car) {}
-    public void electricianWork (String scheme) {}
+    public void plumberWork(String plumber, int car) {
+
+    }
+    public void electricianWork(String scheme) {
+
+    }
 }

@@ -26,7 +26,13 @@ public class Engineer extends Profession {
         this.deadline = deadline;
     }
 
-        public void count(int math, int deadline, int period){}
-        public void draw(String qualification, int instrument) {}
-        public void build(int period, int deadline) {}
+        public void count(int math, int deadline, int period) {
+
+        }
+        public void draw(String qualification, int instrument) {
+
+        }
+        public void build(int period, int deadline) {
+
+        }
 }

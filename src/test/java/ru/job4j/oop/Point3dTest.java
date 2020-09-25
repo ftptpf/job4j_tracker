@@ -17,9 +17,9 @@ public class Point3dTest {
     }
     @Test
     public void distance3d() {
-        Point3d d = new Point3d(2,6,8);
+        Point3d d = new Point3d(2, 6, 8);
         Point3d v = new Point3d(1, 3, 4);
-        double result =Math.round(d.distance3d(v));
+        double result = Math.round(d.distance3d(v));
         double expected = 7;
         assertThat(result, is(expected));
     }

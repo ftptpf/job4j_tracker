@@ -14,7 +14,7 @@ public class Tracker {
      * @return
      */
     public Item add(Item item) {
-        item.setId(ids++);// создаем и устанавливаем новый id
+        item.setId(ids++); // создаем и устанавливаем новый id
         items.add(item); // добавляем item в списочный массив ArrayList
         return item;
     }

@@ -13,16 +13,16 @@ public class UniqueText {
      */
     public static boolean isEquals(String originText, String duplicateText) {
         boolean rsl = true;
-        String[] origin = originText.split(" ");//Преобразование строки в массив слов
-        String[] text = duplicateText.split(" ");//Преобразование строки в массив слов
+        String[] origin = originText.split(" "); //Преобразование строки в массив слов
+        String[] text = duplicateText.split(" "); //Преобразование строки в массив слов
         HashSet<String> check = new HashSet<>();
-        for (String str : origin) {// Проходим по массиву, берем слова из (оригинального) текста
-            check.add(str);//вставляем (уникальные) уникальные слова в коллекцию
+        for (String str : origin) { // Проходим по массиву, берем слова из (оригинального) текста
+            check.add(str); //вставляем (уникальные) уникальные слова в коллекцию
         }
-        for (String hs : text) {// Проходим по массиву, берем слова из (проверяемого) текста
-            if (!check.contains(hs)) {//проверяем, если хотя бы одно из слов уникально, его нет в оригинальной строке
-                rsl = false;// возврашаем false
-                break;//прерываем выполнение цикла
+        for (String hs : text) { // Проходим по массиву, берем слова из (проверяемого) текста
+            if (!check.contains(hs)) { //проверяем, если хотя бы одно из слов уникально, его нет в оригинальной строке
+                rsl = false; // возврашаем false
+                break; //прерываем выполнение цикла
             }
         }
         return rsl;

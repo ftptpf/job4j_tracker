@@ -2,7 +2,7 @@ package ru.job4j.tracker;
 
 import java.util.List;
 
-public class FindByNameAction implements UserAction{
+public class FindByNameAction implements UserAction {
     private final Output out;
 
     public FindByNameAction(Output out) {
@@ -21,7 +21,7 @@ public class FindByNameAction implements UserAction{
         if (n.size() == 0) {
             out.println("Error. We can't find result.");
         } else {
-            for(int i = 0; i < n.size(); i++) {
+            for (int i = 0; i < n.size(); i++) {
                 out.println(n.get(i));
             }
         }

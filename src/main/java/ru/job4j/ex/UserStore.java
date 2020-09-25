@@ -23,10 +23,10 @@ public class UserStore {
         }
         return booChek;
     }
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         User[] users = {
-                new User ("Petr Arsentev", true)
+                new User("Petr Arsentev", true)
         };
         User user = new User("Petr Arsentev", true);
         try {

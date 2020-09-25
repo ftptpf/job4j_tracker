@@ -7,15 +7,15 @@ public class DropArray {
         String[] names = {"Petr", null, "Ivan", "Stepan", null};
         String[] namesWithoutNulls = new String[names.length];
         int size = 0;
-        for(int index=0; index < names.length;index++) {
+        for (int index = 0; index < names.length; index++) {
             String name = names[index];
-            if(name != null) {
+            if (name != null) {
                 namesWithoutNulls[size] = name;
                 size++;
             }
         }
         namesWithoutNulls = Arrays.copyOf(namesWithoutNulls, size);
-        for(int index = 0; index < namesWithoutNulls.length; index++) {
+        for (int index = 0; index < namesWithoutNulls.length; index++) {
             System.out.println(namesWithoutNulls[index]);
         }
     }

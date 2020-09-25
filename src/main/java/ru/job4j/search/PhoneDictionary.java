@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class PhoneDictionary {
     private ArrayList<Person> persons = new ArrayList<Person>();
 
-    public void add (Person person) {
+    public void add(Person person) {
         this.persons.add(person);
     }
     /**
@@ -20,7 +20,7 @@ public class PhoneDictionary {
             String s = persons.get(index).getSurname();
             String p = persons.get(index).getPhone();
             String a = persons.get(index).getAddress();
-            if(n.contains(key) || s.contains(key) || p.contains(key) || a.contains(key)) {
+            if (n.contains(key) || s.contains(key) || p.contains(key) || a.contains(key)) {
                 result = persons;
             }
         }

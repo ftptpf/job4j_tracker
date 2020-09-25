@@ -37,7 +37,7 @@ public class BankService {
         User findUser = null;
         Set<User> set = users.keySet();
         for (User person : set) {
-            if(person.getPassport().equals(passport)); {
+            if (person.getPassport().equals(passport)) {
                 findUser = person;
                 break;
             }

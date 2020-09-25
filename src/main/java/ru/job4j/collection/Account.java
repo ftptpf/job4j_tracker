@@ -8,9 +8,9 @@ import java.util.Objects;
  * Этот класс хранить информацию, но не будет выполнять логики.
  */
 public class Account {
-    private String passport;//номер паспорта
-    private String username;//ФИО
-    private String deposit;//номер счета
+    private String passport; //номер паспорта
+    private String username; //ФИО
+    private String deposit; //номер счета
 
     public Account(String passport, String username, String deposit) {
         this.passport = passport;
@@ -20,8 +20,12 @@ public class Account {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Account account = (Account) o;
         return Objects.equals(passport, account.passport);
     }
@@ -33,10 +37,10 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account {" +
-                "passport='" + username + '\'' +
-                "deposit='" + deposit + '\'' +
-                '}';
+        return "Account {"
+                + "passport='" + username + '\''
+                + "deposit='" + deposit + '\''
+                + '}';
     }
 }
 

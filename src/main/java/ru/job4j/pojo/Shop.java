@@ -36,8 +36,8 @@ public class Shop {
             }
         }
         System.out.println();
-        System.out.println("Проверяем работу метода delete. Смещение всего массива влево и назначение крайнему правому" +
-                "элементу массива значения null.");
+        System.out.println("Проверяем работу метода delete. Смещение всего массива влево и назначение крайнему правому"
+                + "элементу массива значения null.");
 
         for (int i = 0; i < products.length; i++) {
             Product product = products[i];
@@ -52,8 +52,8 @@ public class Shop {
         }
 
             System.out.println();
-            System.out.println("Записываем в ячейку с индексом 1 значение с индексом 2. " +
-                    "И удаляем значение из ячейки с индексом 2.");
+            System.out.println("Записываем в ячейку с индексом 1 значение с индексом 2. "
+                    + "И удаляем значение из ячейки с индексом 2.");
             products[1] = products[2];
             products[2] = null;
 

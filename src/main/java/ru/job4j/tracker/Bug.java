@@ -1,4 +1,4 @@
 package ru.job4j.tracker;
 
-public class Bug extends Items{
+public class Bug extends Items {
 }

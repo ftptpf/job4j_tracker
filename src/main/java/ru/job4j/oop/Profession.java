@@ -7,7 +7,9 @@ public class Profession {
     private int birthday;
     private int experience;
 
-    public Profession() {}
+    public Profession() {
+
+    }
     public Profession(String name, String surname) {
         this.name = name;
         this.surname = surname;
@@ -24,8 +26,16 @@ public class Profession {
         this.experience = experience;
     }
 
-    public void getName(String name, String surname) {}
-    public void educationInfo(String education) {}
-    public void getBirthday(int birthday) {}
-    public void getExperience(int experience) {}
+    public void getName(String name, String surname) {
+
+    }
+    public void educationInfo(String education) {
+
+    }
+    public void getBirthday(int birthday) {
+
+    }
+    public void getExperience(int experience) {
+
+    }
 }

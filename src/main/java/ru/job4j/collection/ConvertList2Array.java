@@ -12,7 +12,7 @@ public class ConvertList2Array {
     public static int[][] toArray(List<Integer> list, int cells) {
         int groups = (int) Math.ceil((double) list.size() / cells); // определение количества групп
         // с округлением в большую сторону
-        int [][] array = new int[groups][cells];
+        int[][] array = new int[groups][cells];
         int row = 0, cell = 0; // инициализация строки и ячейки
         for (Integer num : list) {
             array[row][cell] = num;
@@ -27,7 +27,7 @@ public class ConvertList2Array {
 
     public static void main(String[] args) {
         List<Integer> list = List.of(1, 2, 3, 4, 5, 6, 7);
-        int [][] rls = toArray(list, 3);
+        int[][] rls = toArray(list, 3);
         for (int[] row : rls) {
             for (int cell : row) {
                 System.out.println(cell + " ");

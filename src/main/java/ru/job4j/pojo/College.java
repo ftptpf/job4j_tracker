@@ -8,7 +8,7 @@ public class College {
         student.setFio("Ivanov Sergey Petrovich");
         student.setGroup(44);
         student.setStart(new Date());
-        System.out.println(student.getFio() + " from group №" + student.getGroup() +
-                " is start study in - " + student.getStart());
+        System.out.println(student.getFio() + " from group №" + student.getGroup()
+                + " is start study in - " + student.getStart());
     }
 }

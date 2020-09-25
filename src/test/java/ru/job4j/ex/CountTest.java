@@ -9,12 +9,12 @@ public class CountTest {
 
     @Test (expected = IllegalArgumentException.class)
     public void whenStartGreaterThenFinish() {
-        Count.add(10,2);
+        Count.add(10, 2);
     }
 
     @Test
     public void when0to2then3() {
-        int rls = Count.add(0,3);
+        int rls = Count.add(0, 3);
         assertThat(rls, is(3));
     }
 }

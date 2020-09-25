@@ -47,7 +47,7 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         String nameNewResult = String.valueOf(tracker.findById(item.getId()));
-        assertThat(nameNewResult,is(nameNew));
+        assertThat(nameNewResult, is(nameNew));
     }
 
     @Test
@@ -82,8 +82,8 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + br +
-                "0. Exit Program." + br));
+                "Menu." + br
+                        + "0. Exit Program." + br));
     }
 
     @Test
@@ -106,15 +106,15 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + br +
-                        "0. Show all items." + br +
-                        "1. Exit Program." + br +
-                        "=== All Items ===" + br +
-                        "1 One" + br +
-                        "2 Two" + br +
-                        "Menu." + br +
-                        "0. Show all items." + br +
-                        "1. Exit Program." + br));
+                "Menu." + br
+                        + "0. Show all items." + br
+                        + "1. Exit Program." + br
+                        + "=== All Items ===" + br
+                        + "1 One" + br
+                        + "2 Two" + br
+                        + "Menu." + br
+                        + "0. Show all items." + br
+                        + "1. Exit Program." + br));
     }
 
     @Test
@@ -137,14 +137,14 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + br +
-                        "0. Find item by Id." + br +
-                        "1. Exit Program." + br +
-                        "=== Find item by id ===" + br +
-                        "1 One" + br +
-                        "Menu." + br +
-                        "0. Find item by Id." + br +
-                        "1. Exit Program." + br));
+                "Menu." + br
+                        + "0. Find item by Id." + br
+                        + "1. Exit Program." + br
+                        + "=== Find item by id ===" + br
+                        + "1 One" + br
+                        + "Menu." + br
+                        + "0. Find item by Id." + br
+                        + "1. Exit Program." + br));
     }
 
     @Test
@@ -167,14 +167,14 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + br +
-                        "0. Find items by name." + br +
-                        "1. Exit Program." + br +
-                        "=== Find item by name ===" + br +
-                        "1 One" + br +
-                        "Menu." + br +
-                        "0. Find items by name." + br +
-                        "1. Exit Program." + br));
+                "Menu." + br
+                        + "0. Find items by name." + br
+                        + "1. Exit Program." + br
+                        + "=== Find item by name ===" + br
+                        + "1 One" + br
+                        + "Menu." + br
+                        + "0. Find items by name." + br
+                        + "1. Exit Program." + br));
     }
 
     @Test
@@ -190,10 +190,10 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         assertThat(out.toString(), is(
-                "Menu." + br +
-                        "0. Exit Program." + br +
-                        "Wrong input, you can select: 0 .. 0" + br +
-                        "Menu." + br +
-                        "0. Exit Program." + br));
+                "Menu." + br
+                        + "0. Exit Program." + br
+                        + "Wrong input, you can select: 0 .. 0" + br
+                        + "Menu." + br
+                        + "0. Exit Program." + br));
     }
 }
