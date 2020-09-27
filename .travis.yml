@@ -15,10 +15,10 @@ after_success:
 notifications:
   email:
     recipients:
-      - inboxru@yandex.ru
+      -inboxru@yandex.ru
     on_success: never # default: change
     on_failure: always # defa,ult: always
 
 env:
   global:
-        - CODECOV_TOKEN="9e68994b-a745-4b68-ae29-ad816d3c76d4"
+        -CODECOV_TOKEN="9e68994b-a745-4b68-ae29-ad816d3c76d4"
