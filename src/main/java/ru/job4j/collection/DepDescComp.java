@@ -7,7 +7,6 @@ import java.util.List;
 public class DepDescComp implements Comparator<String> {
     @Override
     public int compare(String o1, String o2) {
-        int result = 0;
         List<String> om1 = new ArrayList<>();
         List<String> om2 = new ArrayList<>();
         for (String el : o1.split("/", 2)) {
@@ -16,26 +15,14 @@ public class DepDescComp implements Comparator<String> {
         for (String el : o2.split("/", 2)) {
             om2.add(el);
         }
-
-        if (!o1.equals(o2)) {
-            if (om1.get(0).compareTo(om2.get(0)) > 0) {
-                if (om2.get(1).compareTo(om2.get(1)) > 0) {
-                    result = 1;
-                } else {
-                    result = -1;
-                }
-            } else if (om1.get(0).compareTo(om2.get(0)) < 0) {
-                if (om2.get(1).compareTo(om2.get(1)) > 0) {
-                    result = 1;
-                } else {
-                    result = -1;
-                }
-            }
-
+        int result = om2.get(0).compareTo(om1.get(0));
+        if (result == 0) {
+            result = om1.get(1).compareTo(om2.get(1));
         }
         return result;
     }
 }
+
 
 //Метод compare должен возвращать 0, 1 или -1. Исходя из этого внутри метода надо придумать нужную логику.
 
