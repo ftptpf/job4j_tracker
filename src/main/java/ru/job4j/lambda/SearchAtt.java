@@ -27,26 +27,16 @@ public class SearchAtt {
     }
 
     private static List<Attachment> filter(List<Attachment> list, Predicate<Attachment> predicate) {
-        //Supplier<List<Attachment>> rsl = ArrayList::new;
         List<Attachment> rsl = new ArrayList<>();
         for (Attachment att : list) {
             if (predicate.test(att)) {
                 rsl.add(att);
             }
-
         }
         return rsl;
-
     }
 
     public static List<Attachment> filterSizeFunction(List<Attachment> list) {
-        BiFunction<List<Attachment>, Attachment, List<Attachment>> function = new BiFunction<List<Attachment>, Attachment, List<Attachment>>() {
-            @Override
-            public List<Attachment> apply(List<Attachment> lst, Attachment at) {
-                lst.add(at);
-                return lst;
-            }
-        };
 
         Predicate<Attachment> sizePredicate = new Predicate<Attachment>() {
             @Override
@@ -58,13 +48,6 @@ public class SearchAtt {
     }
 
     public static List<Attachment> filterSizeFName(List<Attachment> list) {
-        BiFunction<List<Attachment>, Attachment, List<Attachment>> function = new BiFunction<List<Attachment>, Attachment, List<Attachment>>() {
-            @Override
-            public List<Attachment> apply(List<Attachment> lst, Attachment at) {
-                lst.add(at);
-                return lst;
-            }
-        };
 
         Predicate<Attachment> namePredicate = new Predicate<Attachment>() {
             @Override
