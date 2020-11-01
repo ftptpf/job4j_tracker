@@ -22,5 +22,7 @@ public class PhoneDictionaryTest {
         );
         ArrayList<Person> persons = phones.find("Petr");
         assertThat(persons.get(0).getSurname(), is("Arsentev"));
+        assertThat(persons.get(1).getSurname(), is("Nikolaev"));
+        assertThat(persons.get(2).getSurname(), is("Petrov"));
     }
 }
