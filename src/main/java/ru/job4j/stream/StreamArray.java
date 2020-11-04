@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class StreamArray {
     /**
-     * Метод фильтрует поток чилес от -10 до 10 оставляя тольок положительные.
+     * Метод фильтрует поток чилес от -10 до 10 оставляя только положительные.
      * @param args
      */
     public static void main(String[] args) {
