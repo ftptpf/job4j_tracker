@@ -1,7 +1,6 @@
 package ru.job4j.stream;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class StreamUsage {
     public static class Task {
@@ -12,25 +11,22 @@ public class StreamUsage {
             this.name = name;
             this.spent = spent;
         }
-
-        @Override
-        public String toString() {
-            return "Task{" +
-                    "name ='" + name + '\'' +
-                    ", spent=" + spent +
-                    '}';
-        }
     }
 
+    /**
+     * Метод фильтрует поток данных по двум параметрам: 1 - фраза которая входит в name, 2 - spent больше определенного значения
+     * @param args
+     */
     public static void main(String[] args) {
         List<Task> tasks = List.of(
-                new Task("Bug #1", 100),
-                new Task("Task #2", 100),
-                new Task("Bug #3", 100)
+                new Task("Bug #1", 10),
+                new Task("Task #2", 20),
+                new Task("Bug #3", 40)
         );
-        List<Task> bugs = tasks.stream().filter(
-                task -> task.name.contains("Bug")
-        ).collect(Collectors.toList());
-        bugs.forEach(System.out::println);
+        tasks.stream()
+                .filter(task -> task.name.contains("Bug")) // фильтр по фразе "Bug" входящей в name
+                .filter(task -> task.spent > 30) // фильрт по spent больше 30
+                .map(task -> task.name + " " + task.spent) //поток c результатами фильтрации
+                .forEach(System.out::println); // вывод на печать каждого элемента потока
     }
 }
