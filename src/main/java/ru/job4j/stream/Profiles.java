@@ -10,6 +10,9 @@ public class Profiles {
      * @return
      */
     List<Address> collect(List<Profile> profiles) {
-        return profiles.stream().map(x -> x.getAddress()).collect(Collectors.toList());
+        return profiles.stream().map(x -> x.getAddress())
+                .sorted()
+                .distinct()
+                .collect(Collectors.toList());
     }
 }

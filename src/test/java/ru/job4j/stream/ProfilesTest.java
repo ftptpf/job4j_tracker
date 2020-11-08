@@ -27,4 +27,15 @@ public class ProfilesTest {
         List<Address> rsl = r.collect(pr);
         assertThat(rsl, is(list));
     }
+
+    @Test
+    public void collectSortDouble() {
+        List<Profile> pr = new ArrayList<>();
+        pr.add(new Profile(new Address("Samara", "Long", 11, 36)));
+        pr.add(new Profile(new Address("Moscow", "Red", 1, 3)));
+        pr.add(new Profile(new Address("Samara", "Long", 11, 36)));
+        Profiles r = new Profiles();
+        List<Address> rsl = r.collect(pr);
+        assertThat(rsl, is(list));
+    }
 }
