@@ -20,16 +20,11 @@ public class ProfilesTest {
     }
     @Test
     public void collect() {
-        List<Address> rsl = new ArrayList<>();
         List<Profile> pr = new ArrayList<>();
         pr.add(new Profile(new Address("Moscow", "Red", 1, 3)));
         pr.add(new Profile(new Address("Samara", "Long", 11, 36)));
         Profiles r = new Profiles();
-        rsl = r.collect(pr);
+        List<Address> rsl = r.collect(pr);
         assertThat(rsl, is(list));
-
-
-
-
     }
 }
