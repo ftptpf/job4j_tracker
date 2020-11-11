@@ -19,16 +19,17 @@ public class StudentListTest {
         students.add(new Student(10, "Nikolaev"));
         students.add(new Student(20, "Semenov"));
         students.add(new Student(30, "Gordeev"));
+        students.add(new Student(90, "Gordeev"));
     }
 
     @Test
     public void whenConvertListToMap() {
         StudentList sl = new StudentList();
-        Map<String, Integer> result = sl.convertToMap(students);
-        Map<String, Integer> exp = new TreeMap<>();
-        exp.put("Nikolaev", 10);
-        exp.put("Semenov", 20);
-        exp.put("Gordeev", 30);
+        Map<String, Student> result = sl.convertToMap(students);
+        Map<String, Student> exp = new TreeMap<>();
+        exp.put("Nikolaev", new Student(10, "Nikolaev"));
+        exp.put("Semenov", new Student(20, "Semenov"));
+        exp.put("Gordeev", new Student(90, "Gordeev"));
         assertThat(exp, is(result));
     }
 }
