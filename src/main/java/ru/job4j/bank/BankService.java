@@ -1,12 +1,13 @@
 package ru.job4j.bank;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
     /**
-     * Метод добавляет польлзователя в систему.
+     * Метод добавляет пользователя в систему.
      * @param user
      */
     public void addUser(User user) {
@@ -19,7 +20,7 @@ public class BankService {
      * @param account
      */
     public void addAccount(String passport, Account account) {
-        User findUser = findByPassport(passport); // находим пльзователя по номеру паспорта
+        User findUser = findByPassport(passport); // находим пользователя по номеру паспорта
         if (findUser != null) {
             List<Account> userAccounts = users.get(findUser); // находим список Account-ов пользователя
             if (!userAccounts.contains(account)) {
@@ -34,14 +35,15 @@ public class BankService {
      * @return
      */
     public User findByPassport(String passport) {
-        User findUser = null;
         Set<User> set = users.keySet();
-        for (User person : set) {
-            if (person.getPassport().equals(passport)) {
-                findUser = person;
-                break;
-            }
-        }
+
+        User findUser = set.stream() // создаем поток
+                .filter(p -> passport.equals(p.getPassport())) // через фильтр находим пользователя по паспорту
+                .collect(Collectors.toList()) // добавляем пользователя в лист
+                .stream() // создаем еще один стрим
+                .findAny() // находим "любое" значение в листе
+                .orElse(null); // если значения в листе никакого нет, выводим null
+
         return findUser;
     }
 
@@ -56,13 +58,11 @@ public class BankService {
         Account findAccount = null;
         User findUser = findByPassport(passport); // находим пользователя по номеру паспорта
         if (findUser != null) {
-            List<Account> userAccounts = users.get(findUser); // находим список аккаунтов пользователя
-            for (Account a : userAccounts) { //перебираем найденные "Account-ы" пользователя
-                if (a.getRequisite().equals(requisite)) { //если реквизиты найдены
-                    findAccount = a; // возвращаем "Account"
-                    break;
-                }
-            }
+            List<Account> userAccounts = users.get(findUser); // находим список аккаунтов польователя
+            findAccount = userAccounts.stream()
+                    .filter(r -> requisite.equals(r.getRequisite())) // черех фильтр находим аккаунт по реквизитам
+                    .findAny() // берем "любое" значение
+                    .orElse(null); // если значения никакого нет, выводим null
         }
         return findAccount;
     }
