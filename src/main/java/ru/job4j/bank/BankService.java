@@ -39,10 +39,8 @@ public class BankService {
 
         User findUser = set.stream() // создаем поток
                 .filter(p -> passport.equals(p.getPassport())) // через фильтр находим пользователя по паспорту
-                .collect(Collectors.toList()) // добавляем пользователя в лист
-                .stream() // создаем еще один стрим
-                .findAny() // находим "любое" значение в листе
-                .orElse(null); // если значения в листе никакого нет, выводим null
+                .findAny() // находим "любое" значение
+                .orElse(null); // если значения никакого нет, выводим null
 
         return findUser;
     }
