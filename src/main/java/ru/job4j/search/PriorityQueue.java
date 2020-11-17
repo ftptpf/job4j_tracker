@@ -12,7 +12,7 @@ public class PriorityQueue {
      */
     public void put(Task task) {
         int index = 0;
-        for (Task element : tasks) {
+        for (var element : tasks) {
             if (element.getPriority() > task.getPriority()) {
                 break;
             }
