@@ -37,7 +37,7 @@ public class BankService {
         Optional<User> findUser = Optional.empty();
         findUser = users.keySet().stream()
                 .filter(p -> passport.equals(p.getPassport()))
-                .findAny();
+                .findFirst();
 
         return findUser;
     }
@@ -53,9 +53,9 @@ public class BankService {
         Optional<Account> findAccount = Optional.empty();
         Optional<User> findUser = findByPassport(passport); // находим пользователя по номеру паспорта
         if (findUser.isPresent()) {
-            findAccount = users.get(findUser.get()).stream() // находим список аккаунтов польователя
-                    .filter(r -> requisite.equals(r.getRequisite())) // черех фильтр находим аккаунт по реквизитам
-                    .findAny();
+            findAccount = users.get(findUser.get()).stream() // находим список аккаунтов пользователя
+                    .filter(r -> requisite.equals(r.getRequisite())) // через фильтр находим аккаунт по реквизитам
+                    .findFirst();
         }
         return findAccount;
     }
