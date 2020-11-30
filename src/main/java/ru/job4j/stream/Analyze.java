@@ -1,6 +1,7 @@
 package ru.job4j.stream;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -58,11 +59,10 @@ public class Analyze {
          * - последним методом будет collect(), с помощью которого мы все соберем в коллекцию List.
          */
         return stream.flatMap(x -> x.getSubjects().stream())
-                .collect(Collectors.groupingBy(Subject::getName, Collectors.averagingDouble(Subject::getScore)))
+                .collect(Collectors.groupingBy(Subject::getName, LinkedHashMap::new, Collectors.averagingDouble(Subject::getScore)))
                 .entrySet()
                 .stream()
                 .map(x -> new Tuple(x.getKey(), x.getValue()))
-                .sorted()
                 .collect(Collectors.toList());
     }
 
@@ -99,7 +99,6 @@ public class Analyze {
                 .entrySet()
                 .stream()
                 .map(x -> new Tuple(x.getKey(), x.getValue()))
-                .sorted()
                 .max(Comparator.comparingDouble(Tuple::getScore))
                 .orElse(new Tuple("NoOne", 0.0));
     }
