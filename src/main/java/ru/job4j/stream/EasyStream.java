@@ -12,10 +12,6 @@ public class EasyStream {
         this.source = source;
     }
 
-    public List<Integer> getSource() {
-        return source;
-    }
-
     /**
      * Метод получает исходные данные.
      * @param source Лист исходных числовых значений.
@@ -32,17 +28,12 @@ public class EasyStream {
      * @return поток элементов (лист чсловых значений).
      */
     public EasyStream map(Function<Integer, Integer> fun) {
-        EasyStream mapEaseStream = new EasyStream(source);
-        List<Integer> mapList = mapEaseStream.getSource();
         List<Integer> mapListResult = new LinkedList<>();
-        for (Integer m : mapList) {
+        for (Integer m : source) {
             m = fun.apply(m);
             mapListResult.add(m);
         }
-        EasyStream mapEaseStreamResult = new EasyStream(mapListResult);
-
-
-        return mapEaseStreamResult;
+        return new EasyStream(mapListResult);
     }
 
     /**
@@ -51,17 +42,13 @@ public class EasyStream {
      * @return поток элементов (лист чсловых значений).
      */
     public EasyStream filter(Predicate<Integer> fun) {
-        EasyStream filterEaseStream = new EasyStream(source);
-        List<Integer> filterList = filterEaseStream.getSource();
         List<Integer> filterListResult = new ArrayList<>();
-        for (Integer f : filterList) {
+        for (Integer f : source) {
             if (fun.test(f)) {
                 filterListResult.add(f);
             }
         }
-        EasyStream filterEaseStreamResult = new EasyStream(filterListResult);
-
-        return filterEaseStreamResult;
+        return new EasyStream(filterListResult);
     }
 
     /**
