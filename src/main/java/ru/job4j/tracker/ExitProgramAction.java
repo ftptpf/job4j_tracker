@@ -12,7 +12,7 @@ public class ExitProgramAction implements UserAction {
         return "Exit Program.";
     }
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         return false;
     }
 }

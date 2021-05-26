@@ -12,7 +12,7 @@ public class ReplaceAction implements UserAction {
         return "Edit item.";
     }
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store tracker) {
         out.println("=== Edit (replace) item ===");
         int id = Integer.valueOf(input.askInt("Enter id: "));
         String name = input.askStr("Enter new Name: ");
