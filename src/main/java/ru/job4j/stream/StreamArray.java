@@ -11,7 +11,7 @@ public class StreamArray {
      */
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
-        for (int i = - 10; i <= 10; i++) {
+        for (int i = -10; i <= 10; i++) {
             list.add(i);
         }
         List<Integer> listSort = list.stream().filter(

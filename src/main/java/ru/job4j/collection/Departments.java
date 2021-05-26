@@ -19,7 +19,7 @@ public class Departments {
 
             }
         }
-        List<String> rsl= new ArrayList<>(tmp);
+        List<String> rsl = new ArrayList<>(tmp);
         return rsl;
     }
 

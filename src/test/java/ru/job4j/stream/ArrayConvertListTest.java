@@ -11,7 +11,7 @@ public class ArrayConvertListTest {
 
     @Test
     public void arrayConvertToList() {
-        Integer [][] arInt = {{1,2,3}, {4,5,6}, {7,8,9}};
+        Integer[][] arInt = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         List<Integer> result = ArrayConvertList.arrayConvertToList(arInt);
         List<Integer> expected = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
         assertThat(result, is(expected));

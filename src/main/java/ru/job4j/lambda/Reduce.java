@@ -6,7 +6,7 @@ import java.util.function.Supplier;
 
 public class Reduce {
     public static int summation(int to) {
-        int rsl =0;
+        int rsl = 0;
         for (int index = 0; index <= to; index++) {
             rsl += index;
         }

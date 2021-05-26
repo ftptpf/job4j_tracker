@@ -15,7 +15,7 @@ public class DiapasonFunction {
     public static List<Double> diapason(int start, int end, Function<Double, Double> func) {
         List<Double> f = new ArrayList<>();
         for (int i = start; i < end; i++) {
-            f.add(func.apply((double)i));
+            f.add(func.apply((double) i));
         }
         return f;
     }

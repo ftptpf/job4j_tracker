@@ -22,18 +22,22 @@ public class Students {
         this.surname = surname;
     }
 
-    public Students( String surname, int score) {
+    public Students(String surname, int score) {
         this.score = score;
         this.surname = surname;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Students students = (Students) o;
-        return score == students.score &&
-                surname.equals(students.surname);
+        return score == students.score
+                && surname.equals(students.surname);
     }
 
     @Override
@@ -43,9 +47,9 @@ public class Students {
 
     @Override
     public String toString() {
-        return "Students{" +
-                "score=" + score +
-                ", surname='" + surname + '\'' +
-                '}';
+        return "Students{"
+                + "score=" + score
+                + ", surname='" + surname + '\''
+                + '}';
     }
 }

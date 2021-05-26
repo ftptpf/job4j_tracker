@@ -29,7 +29,7 @@ public class DiapasonFunctionTest {
     @Test
     public void whenIndicativeFunctionThenIndicativeResults() {
         DiapasonFunction function = null;
-        List<Double> result = function.diapason(5, 8, x -> 2 * Math.pow(x,x) + 1);
+        List<Double> result = function.diapason(5, 8, x -> 2 * Math.pow(x, x) + 1);
         List<Double> expected = Arrays.asList(6251D, 93313D, 1647087D);
         assertThat(result, is(expected));
     }

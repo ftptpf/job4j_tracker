@@ -83,7 +83,7 @@ public class Analyze {
                 .max(Comparator.comparingDouble(Tuple::getScore))
                 .orElse(new Tuple("NoOne", 0.0));
     }
-    public static Tuple bestSubject (Stream < Pupil > stream) {
+    public static Tuple bestSubject(Stream<Pupil> stream) {
         /**
          * Метод возвращает предмет с наибольшим баллом для всех студентов.
          * Возвращает объект Tuple (имя предмета, сумма баллов каждого ученика по этому предмету)
