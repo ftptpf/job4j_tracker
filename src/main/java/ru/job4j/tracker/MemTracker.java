@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Работа с заявками, которые хранятся в памяти.
  */
 public class MemTracker {
 
