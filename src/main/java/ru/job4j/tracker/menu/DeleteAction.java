@@ -1,5 +1,12 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.menu;
 
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.Store;
+
+/**
+ * Удаляем заявку.
+ */
 public class DeleteAction implements UserAction {
     private final Output out;
 

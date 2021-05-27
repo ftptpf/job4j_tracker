@@ -1,9 +1,9 @@
 package ru.job4j.tracker;
 
+/**
+ * Класс Item описывает модель заявки.
+ */
 public class Item {
-    /**
-     * Класс Item описывает модель заявки.
-     */
     private int id; //уникальный номер заявки
     private String name; // название заявки
 

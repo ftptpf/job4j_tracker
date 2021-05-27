@@ -1,6 +1,11 @@
 package ru.job4j.tracker;
 
 import org.junit.Test;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.other.StubInput;
+import ru.job4j.tracker.menu.*;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.other.StubOutput;
 
 import java.util.ArrayList;
 import java.util.List;

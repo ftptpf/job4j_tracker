@@ -1,5 +1,12 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.menu;
 
+import ru.job4j.tracker.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.output.Output;
+
+/**
+ * Находим заявку по id.
+ */
 public class FindAllByIdAction implements UserAction {
     private final Output out;
 

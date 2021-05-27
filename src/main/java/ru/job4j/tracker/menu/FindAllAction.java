@@ -1,7 +1,14 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.menu;
+
+import ru.job4j.tracker.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.output.Output;
 
 import java.util.List;
 
+/**
+ * Находим все заявки.
+ */
 public class FindAllAction implements UserAction {
     private final Output out;
 

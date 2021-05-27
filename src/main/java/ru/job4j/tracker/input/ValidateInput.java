@@ -1,5 +1,11 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.input;
 
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.output.Output;
+
+/**
+ * Проверка вводимых поьлзователем с консоли данных.
+ */
 public class ValidateInput implements Input {
     private final Output out;
     private final Input in;

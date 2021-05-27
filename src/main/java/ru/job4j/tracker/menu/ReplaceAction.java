@@ -1,5 +1,12 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.menu;
 
+import ru.job4j.tracker.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.output.Output;
+
+/**
+ * Изменяем заявку.
+ */
 public class ReplaceAction implements UserAction {
     private final Output out;
 
