@@ -25,6 +25,7 @@ public class StartUI {
      * @param actions
      */
     public void init(Input input, Store tracker, List<UserAction> actions) {
+        tracker.init(); //  инициализироуем соединение с postgresql базой items
         boolean run = true;
         while (run) {
             this.showMenu(actions);

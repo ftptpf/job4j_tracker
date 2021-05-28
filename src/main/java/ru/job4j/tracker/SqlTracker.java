@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +16,16 @@ public class SqlTracker implements Store {
     private Connection cn;
 
     public void init() {
-        try (InputStream in = SqlTracker.class
+        try (/*InputStream in = SqlTracker.class
                 .getClassLoader()
-                .getResourceAsStream("app.properties")) {
+                .getResourceAsStream("resources/app.properties")) */
+                BufferedInputStream bufferedInputStream = new BufferedInputStream(
+                        new FileInputStream(
+                                Paths.get("resources/app.properties").toFile()));
+                ) {
+
             Properties config = new Properties();
-            config.load(in);
+            config.load(bufferedInputStream);
             Class.forName(config.getProperty("driver-class-name"));
             cn = DriverManager.getConnection(
                     config.getProperty("url"),
@@ -74,17 +82,17 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findAll() {
+        init();
         List<Item> items = new ArrayList<>();
         try (PreparedStatement pStatement = cn.prepareStatement("SELECT * FROM items")) {
             try (ResultSet resultSet = pStatement.executeQuery()) {
                 while (resultSet.next()) {
-                    items.add(new Item(
-                            resultSet.getInt("id"),
-                            resultSet.getString("name")
-                    ));
+                    Item item = new Item();
+                    item.setId(resultSet.getInt("id"));
+                    item.setName(resultSet.getString("name"));
+                    items.add(item);
                 }
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -93,16 +101,44 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findByName(String key) {
-        return null;
+        List<Item> items = new ArrayList<>();
+        try (PreparedStatement pStatement = cn.prepareStatement("SELECT * FROM items WHERE name = ?")) {
+            pStatement.setString(1, key);
+            try (ResultSet resultSet = pStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Item item = new Item();
+                    item.setId(resultSet.getInt("id"));
+                    item.setName(resultSet.getString("name"));
+                    items.add(item);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return items;
     }
 
     @Override
     public Item findById(int id) {
-        return null;
+        Item result = new Item();
+        try (PreparedStatement pStatement = cn.prepareStatement("SELECT * FROM items WHERE id = ?")) {
+            pStatement.setInt(1, id);
+            try (ResultSet resultSet = pStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    result.setId(resultSet.getInt("id"));
+                    result.setName(resultSet.getString("name"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
     public void close() throws Exception {
-
+        if (cn != null) {
+            cn.close();
+        }
     }
 }

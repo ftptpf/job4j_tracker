@@ -24,6 +24,7 @@ public class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Store tracker = new SqlTracker();
+        //tracker.init();
 
         List<UserAction> actions = new ArrayList<>();
         actions.add(new CreateAction(out));
