@@ -25,6 +25,7 @@ public class CreateAction implements UserAction {
         Item item = new Item();
         item.setName(name);
         tracker.add(item);
+        System.out.println("The Item has been added: " + item);
         return true;
     }
 }

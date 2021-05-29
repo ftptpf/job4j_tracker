@@ -16,14 +16,10 @@ public class SqlTracker implements Store {
     private Connection cn;
 
     public void init() {
-        try (/*InputStream in = SqlTracker.class
-                .getClassLoader()
-                .getResourceAsStream("resources/app.properties")) */
-                BufferedInputStream bufferedInputStream = new BufferedInputStream(
-                        new FileInputStream(
-                                Paths.get("resources/app.properties").toFile()));
-                ) {
-
+        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(
+                new FileInputStream(
+                        Paths.get("resources/app.properties").toFile()));
+            ) {
             Properties config = new Properties();
             config.load(bufferedInputStream);
             Class.forName(config.getProperty("driver-class-name"));
@@ -82,7 +78,6 @@ public class SqlTracker implements Store {
 
     @Override
     public List<Item> findAll() {
-        init();
         List<Item> items = new ArrayList<>();
         try (PreparedStatement pStatement = cn.prepareStatement("SELECT * FROM items")) {
             try (ResultSet resultSet = pStatement.executeQuery()) {
