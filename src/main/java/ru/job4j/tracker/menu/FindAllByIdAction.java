@@ -22,7 +22,7 @@ public class FindAllByIdAction implements UserAction {
         out.println("=== Find item by id ===");
         int id = Integer.valueOf(input.askInt("Enter id: "));
         Item t = tracker.findById(id);
-        if (t.getName() == null) {
+        if (t == null) {
             out.println("Error. Item is null");
         } else {
             out.println(t);

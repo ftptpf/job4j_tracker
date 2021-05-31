@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
@@ -115,11 +114,12 @@ public class SqlTracker implements Store {
 
     @Override
     public Item findById(int id) {
-        Item result = new Item();
+        Item result = null;
         try (PreparedStatement pStatement = cn.prepareStatement("SELECT * FROM items WHERE id = ?")) {
             pStatement.setInt(1, id);
             try (ResultSet resultSet = pStatement.executeQuery()) {
                 if (resultSet.next()) {
+                    result = new Item();
                     result.setId(resultSet.getInt("id"));
                     result.setName(resultSet.getString("name"));
                 }
