@@ -7,8 +7,14 @@ import ru.job4j.tracker.menu.*;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.output.other.StubOutput;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
@@ -17,9 +23,25 @@ import static org.junit.Assert.assertThat;
 public class StartUITest {
     private final String br = System.lineSeparator();
 
+    public Connection init() {
+        try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
+            Properties config = new Properties();
+            config.load(in);
+            Class.forName(config.getProperty("driver-class-name"));
+            return DriverManager.getConnection(
+                    config.getProperty("url"),
+                    config.getProperty("username"),
+                    config.getProperty("password")
+            );
+
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
     @Test
-    public void whenAddItem() {
-        Output out = new StubOutput();
+    public void whenAddItem() throws Exception {
+/*        Output out = new StubOutput();
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
@@ -30,7 +52,14 @@ public class StartUITest {
         actions.add(new ExitProgramAction(out));
 
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
+        assertThat(tracker.findAll().get(0).getName(), is("Item name"));*/
+        //SqlTracker tracker = new SqlTracker();
+        try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
+            Item item = new Item();
+            item.setName("name");
+            tracker.add(item);
+            assertThat(tracker.findByName("name").size(), is(1));
+        }
     }
 
     @Test

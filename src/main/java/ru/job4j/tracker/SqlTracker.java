@@ -14,6 +14,10 @@ import java.util.Properties;
 public class SqlTracker implements Store {
     private Connection cn;
 
+    public SqlTracker(Connection connection) {
+        this.cn = connection;
+    }
+
     public void init() {
         try (BufferedInputStream bufferedInputStream = new BufferedInputStream(
                 new FileInputStream(
@@ -38,16 +42,17 @@ public class SqlTracker implements Store {
         try (PreparedStatement pStatement = cn.prepareStatement("INSERT INTO items (name) VALUES (?)",
                 Statement.RETURN_GENERATED_KEYS)) {
             pStatement.setString(1, item.getName());
-            pStatement.execute();
+            pStatement.executeUpdate();
             try (ResultSet getGeneratedKey = pStatement.getGeneratedKeys()) {
                 if (getGeneratedKey.next()) {
                     item.setId(getGeneratedKey.getInt(1));
                 }
+                return item;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return item;
+        throw new IllegalStateException("Could not create new user");
     }
 
     @Override
