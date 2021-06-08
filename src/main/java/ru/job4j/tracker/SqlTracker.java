@@ -11,8 +11,11 @@ import java.util.Properties;
 /**
  * Работа с базой данных.
  */
-public class SqlTracker implements Store {
+public class SqlTracker implements Store, AutoCloseable {
     private Connection cn;
+
+    public SqlTracker() {
+    }
 
     public SqlTracker(Connection connection) {
         this.cn = connection;

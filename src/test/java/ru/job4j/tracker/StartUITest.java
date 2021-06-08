@@ -18,10 +18,13 @@ import java.util.Properties;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
+
 
 public class StartUITest {
     private final String br = System.lineSeparator();
+    private String nameOne = "One";
+    private String nameTwo = "Two";
 
     public Connection init() {
         try (InputStream in = SqlTracker.class.getClassLoader().getResourceAsStream("app.properties")) {
@@ -56,15 +59,15 @@ public class StartUITest {
         //SqlTracker tracker = new SqlTracker();
         try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
             Item item = new Item();
-            item.setName("name");
+            item.setName(nameOne);
             tracker.add(item);
-            assertThat(tracker.findByName("name").size(), is(1));
+            assertThat(tracker.findByName(nameOne).size(), is(1));
         }
     }
 
     @Test
-    public void whenReplaceItem() {
-        Output out = new StubOutput();
+    public void whenReplaceItem() throws Exception {
+/*        Output out = new StubOutput();
         Store tracker = new SqlTracker();
         Item item = new Item();
         item.setName("Replaced item");
@@ -81,12 +84,24 @@ public class StartUITest {
 
         new StartUI(out).init(in, tracker, actions);
         String nameNewResult = String.valueOf(tracker.findById(item.getId()));
-        assertThat(nameNewResult, is(nameNew));
+        assertThat(nameNewResult, is(nameNew));*/
+
+        try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
+            Item itemOne = new Item();
+            itemOne.setName(nameOne);
+            tracker.add(itemOne);
+            assertThat(tracker.findByName(nameOne).size(), is(1));
+            Item itemTwo = new Item();
+            itemTwo.setName(nameTwo);
+            tracker.replace(itemOne.getId(), itemTwo);
+            assertThat(tracker.findByName(nameOne).size(), is(0));
+            assertThat(tracker.findByName(nameTwo).size(), is(1));
+        }
     }
 
     @Test
-    public void whenDeleteItem() {
-        Output out = new StubOutput();
+    public void whenDeleteItem() throws Exception {
+/*        Output out = new StubOutput();
         Store tracker = new SqlTracker();
         Item item = new Item();
         item.setName("Deleted item");
@@ -100,7 +115,15 @@ public class StartUITest {
         actions.add(new ExitProgramAction(out));
 
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(nullValue()));
+        assertThat(tracker.findById(item.getId()), is(nullValue()));*/
+        try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
+            Item itemOne = new Item();
+            itemOne.setName(nameOne);
+            tracker.add(itemOne);
+            assertThat(tracker.findByName(nameOne).size(), is(1));
+            tracker.delete(itemOne.getId());
+            assertThat(tracker.findByName(nameOne).size(), is(0));
+        }
     }
 
     @Test
@@ -121,8 +144,8 @@ public class StartUITest {
     }
 
     @Test
-    public void whenFindAll() {
-        Output out = new StubOutput();
+    public void whenFindAll() throws Exception {
+/*        Output out = new StubOutput();
         Store tracker = new SqlTracker();
         Item item1 = new Item();
         item1.setName("One");
@@ -148,12 +171,29 @@ public class StartUITest {
                         + "2 Two" + br
                         + "Menu." + br
                         + "0. Show all items." + br
-                        + "1. Exit Program." + br));
+                        + "1. Exit Program." + br));*/
+        try (SqlTracker tracker = new SqlTracker(ConnectionRollback.create(this.init()))) {
+            Item itemOne = new Item();
+            itemOne.setName(nameOne);
+            tracker.add(itemOne);
+            Item itemTwo = new Item();
+            itemTwo.setName(nameTwo);
+            tracker.add(itemTwo);
+
+            List<Item> controlList = new ArrayList<>();
+            controlList.add(itemOne);
+            controlList.add(itemTwo);
+
+            List<Item> list = tracker.findAll();
+            assertTrue(list.containsAll(controlList));
+            assertThat(tracker.findByName(nameOne).size(), is(1));
+            assertThat(tracker.findByName(nameTwo).size(), is(1));
+        }
     }
 
     @Test
     public void whenFindById() {
-        Output out = new StubOutput();
+/*        Output out = new StubOutput();
         Store tracker = new SqlTracker();
         Item item1 = new Item();
         item1.setName("One");
@@ -178,12 +218,13 @@ public class StartUITest {
                         + "1 One" + br
                         + "Menu." + br
                         + "0. Find item by Id." + br
-                        + "1. Exit Program." + br));
+                        + "1. Exit Program." + br));*/
+
     }
 
     @Test
     public void whenFindByName() {
-        Output out = new StubOutput();
+/*        Output out = new StubOutput();
         Store tracker = new SqlTracker();
         Item item1 = new Item();
         item1.setName("One");
@@ -208,7 +249,8 @@ public class StartUITest {
                         + "1 One" + br
                         + "Menu." + br
                         + "0. Find items by name." + br
-                        + "1. Exit Program." + br));
+                        + "1. Exit Program." + br));*/
+
     }
 
     @Test
